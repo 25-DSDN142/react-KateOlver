@@ -1,10 +1,58 @@
 // ----=  Faces  =----
 /* load images here */
+
+let starImage; 
+let heartImage;
+let cloudImage;
+let circleImage;
+//backgrounds
+let Starbackground;
+let Heartbackground;
+let Cloudbackground;
+let Circlebackground;
+
+let currentImage;
+let currentBackground;
+
+function keyTyped(){
+  if (key === 'z'){
+    currentBackground = Starbackground;
+    currentImage = starImage;
+  }
+  else if (key === 'x'){
+    currentBackground = Heartbackground;
+    currentImage = heartImage;
+  }
+  else if (key === 'c'){
+    currentBackground = Cloudbackground;
+    currentImage = cloudImage;
+  }
+  else if (key === 'v'){
+    currentBackground = Circlebackground;
+    currentImage = circleImage;
+  }
+  
+}
+
 function prepareInteraction() {
-  //bgImage = loadImage('/images/background.png');
+
+  Starbackground = loadImage('/images/starbackground_.png');
+  Heartbackground = loadImage('/images/heartbackground.png');
+  Cloudbackground = loadImage('/images/cloudbackground.png');
+  Circlebackground = loadImage('/images/circlebackground_.png');
+
+  starImage = loadImage('/images/star.png');
+  heartImage = loadImage('/images/Heart.png');
+  cloudImage = loadImage('/images/cloud.png');
+  circleImage = loadImage('/images/circle.png');
+
+ 
+  currentBackground =Starbackground;
+  currentImage = starImage;
 }
 
 function drawInteraction(faces, hands) {
+image(currentBackground, 0, 0, 1280, 720);
 
   // for loop to capture if there is more than one face on the screen. This applies the same process to all faces. 
   for (let i = 0; i < faces.length; i++) {
@@ -61,14 +109,33 @@ function drawInteraction(faces, hands) {
 
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
-    /*
+    /*  
     Start drawing on the face here
     */
-    noStroke()
-    fill(225, 225, 0);
-    // fill(get(leftEyeCenterX, leftEyeCenterY))
+    // noStroke()
+    // fill(66, 135, 245);
+    // // fill(get(leftEyeCenterX, leftEyeCenterY))
 
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
+    // ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth*2, leftEyeHeight*2);
+    // ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth*2, rightEyeHeight*2);
+
+    // fill(212, 228, 255);
+    //   ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/1.5, leftEyeHeight/1.5);
+    //   ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/1.5, rightEyeHeight/1.5);
+
+
+//cause keyboard to chage elements instead of hands 
+    
+   
+
+  push()
+  imageMode(CENTER);
+  // console.log(currentImage);
+  
+  image(currentImage, noseTipX, noseTipY, 700, 700);
+  pop()
+
+// 
 
     drawPoints(face.leftEye);
     drawPoints(face.leftEyebrow);

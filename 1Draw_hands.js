@@ -1,3 +1,6 @@
+
+
+
 // ----=  HANDS  =----
 /* load images here */
 function prepareInteraction() {
@@ -25,12 +28,12 @@ function drawInteraction(faces, hands) {
     Start drawing on the hands here
     */
 
-    fill(225, 225, 0);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
+    // fill(153, 28, 122); //Navy blue
+    // square(indexFingerTipX, indexFingerTipY, 80);
 
     // drawPoints(hand)
 
-    //fingerPuppet(indexFingerTipX, indexFingerTipY);
+    fingerPuppet(indexFingerTipX, indexFingerTipY);
 
     //chameleonHandPuppet(hand)
 
