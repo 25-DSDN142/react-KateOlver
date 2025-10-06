@@ -26,12 +26,13 @@ function drawInteraction(faces, hands) {
      face.rightEyebrow
     */
 
+     let Staropen = loadImage('/images/Staropen.png');
     /*
     Start drawing on the face here
     */
-    checkIfMouthOpen(face);
-    if (isMouthOpen) {
-      text("blah blah", face.keypoints[287].x, face.keypoints[287].y)
+    checkIfStarEyeshOpen(face);
+    if (isEyesOpen) {
+      Image(Staropen.png, face.keypoints[257].x, face.keypoints[374].y)
     }
 
     /*
@@ -44,19 +45,19 @@ function drawInteraction(faces, hands) {
 }
 
 
-function checkIfMouthOpen(face) {
+function checkIfEyeOpen(face) {
 
-  let upperLip = face.keypoints[13]
-  let lowerLip = face.keypoints[14]
+  let eyeLid = face.keypoints[13]
+  let underEye = face.keypoints[14]
   // ellipse(lowerLip.x,lowerLip.y,20)
   // ellipse(upperLip.x,upperLip.y,20)
 
-  let d = dist(upperLip.x, upperLip.y, lowerLip.x, lowerLip.y);
+  let d = dist(eyeLid.x, underEye.y, eyeLid.x, underEye.y);
   //console.log(d)
   if (d < 10) {
-    isMouthOpen = false;
+    isEyehOpen = false;
   } else {
-    isMouthOpen = true;
+    isEyeClosed = true;
   }
 
 }

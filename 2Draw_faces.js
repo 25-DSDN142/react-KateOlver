@@ -14,26 +14,6 @@ let Circlebackground;
 let currentImage;
 let currentBackground;
 
-function keyTyped(){
-  if (key === 'z'){
-    currentBackground = Starbackground;
-    currentImage = starImage;
-  }
-  else if (key === 'x'){
-    currentBackground = Heartbackground;
-    currentImage = heartImage;
-  }
-  else if (key === 'c'){
-    currentBackground = Cloudbackground;
-    currentImage = cloudImage;
-  }
-  else if (key === 'v'){
-    currentBackground = Circlebackground;
-    currentImage = circleImage;
-  }
-  
-}
-
 function prepareInteraction() {
 
   Starbackground = loadImage('/images/starbackground_.png');
@@ -54,6 +34,7 @@ function prepareInteraction() {
 function drawInteraction(faces, hands) {
 image(currentBackground, 0, 0, 1280, 720);
 
+
   // for loop to capture if there is more than one face on the screen. This applies the same process to all faces. 
   for (let i = 0; i < faces.length; i++) {
     let face = faces[i]; // face holds all the keypoints of the face\
@@ -61,18 +42,7 @@ image(currentBackground, 0, 0, 1280, 720);
     if (showKeypoints) {
       drawPoints(face)
     }
-
-    /*
-    Once this program has a face, it knows some things about it.
-    This includes how to draw a box around the face, and an oval. 
-    It also knows where the key points of the following parts are:
-     face.leftEye
-     face.leftEyebrow
-     face.lips
-     face.rightEye
-     face.rightEyebrow
-    */
-    // Here are some variables you may like to use. 
+   
     // Face basics
     let faceCenterX = face.faceOval.centerX;
     let faceCenterY = face.faceOval.centerY;
@@ -112,35 +82,42 @@ image(currentBackground, 0, 0, 1280, 720);
     /*  
     Start drawing on the face here
     */
-    // noStroke()
-    // fill(66, 135, 245);
-    // // fill(get(leftEyeCenterX, leftEyeCenterY))
-
-    // ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth*2, leftEyeHeight*2);
-    // ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth*2, rightEyeHeight*2);
-
-    // fill(212, 228, 255);
-    //   ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/1.5, leftEyeHeight/1.5);
-    //   ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/1.5, rightEyeHeight/1.5);
-
-
-//cause keyboard to chage elements instead of hands 
-    
-   
 
   push()
   imageMode(CENTER);
   // console.log(currentImage);
   image(currentImage, noseTipX, noseTipY, 700, 700);
-  pop()
+ pop()
 
-// 
+    if(currentImage === starImage){
+//star left eye
+    noStroke();
+    fill(142, 107, 17);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*10);
+//star right eye
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*10);
+    }
+ if(currentImage === heartImage){
 
-    drawPoints(face.leftEye);
-    drawPoints(face.leftEyebrow);
-    drawPoints(face.lips);
-    drawPoints(face.rightEye);
-    drawPoints(face.rightEyebrow);
+ }
+if(currentImage === cloudImage){
+
+
+}
+  if(currentImage === circleImage){ 
+
+
+  }
+
+
+
+
+
+    // drawPoints(face.leftEye);
+    // drawPoints(face.leftEyebrow);
+    // drawPoints(face.lips);
+    // drawPoints(face.rightEye);
+    // drawPoints(face.rightEyebrow);
 
     // drawX(rightEyeCenterX,rightEyeCenterY);
     // drawX(leftEyeCenterX,leftEyeCenterY);
@@ -160,6 +137,30 @@ image(currentBackground, 0, 0, 1280, 720);
   //------------------------------------------------------
   // You can make addtional elements here, but keep the face drawing inside the for loop. 
 }
+
+function keyTyped(){
+  if (key === 'z'){
+    currentBackground = Starbackground;
+    currentImage = starImage;
+
+
+  }
+
+  else if (key === 'x'){
+    currentBackground = Heartbackground;
+    currentImage = heartImage;
+  }
+  else if (key === 'c'){
+    currentBackground = Cloudbackground;
+    currentImage = cloudImage;
+  }
+  else if (key === 'v'){
+    currentBackground = Circlebackground;
+    currentImage = circleImage;
+  }
+}
+
+
 
 function drawX(X, Y) {
   push()
