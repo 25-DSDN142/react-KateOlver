@@ -90,21 +90,41 @@ image(currentBackground, 0, 0, 1280, 720);
  pop()
 
     if(currentImage === starImage){
-//star left eye
     noStroke();
     fill(142, 107, 17);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*10);
+//star left eye
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
 //star right eye
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*10);
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
     }
+
+
  if(currentImage === heartImage){
+   noStroke();
+    fill(142, 17, 108);
+ //heart left eye
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
+//heart right eye
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
+    }
 
- }
+ 
 if(currentImage === cloudImage){
-
+ noStroke();
+    fill(22, 50, 98);
+ //Cloud left eye
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
+//Cloud right eye
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
 
 }
   if(currentImage === circleImage){ 
+ noStroke();
+    fill(16, 128, 23);
+ //Circle left eye
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
+//circle right eye
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
 
 
   }
