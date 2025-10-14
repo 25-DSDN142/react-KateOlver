@@ -4,30 +4,31 @@
 let starImage; 
 let heartImage;
 let cloudImage;
-let circleImage;
+let flowerImage;
+
 //backgrounds
-let Starbackground;
-let Heartbackground;
-let Cloudbackground;
-let Circlebackground;
+let starbackground;
+let heartbackground;
+let cloudbackground;
+let flowerbackground;
 
 let currentImage;
 let currentBackground;
 
 function prepareInteraction() {
 
-  Starbackground = loadImage('/images/starbackground_.png');
-  Heartbackground = loadImage('/images/heartbackground.png');
-  Cloudbackground = loadImage('/images/cloudbackground.png');
-  Circlebackground = loadImage('/images/circlebackground_.png');
-
+  starbackground = loadImage('/images/starbackground_.png');
+  heartbackground = loadImage('/images/heartbackground.png');
+  cloudbackground = loadImage('/images/cloudbackground.png');
+  flowerbackground = loadImage('/images/flowerbackground.png');
+ 
   starImage = loadImage('/images/star.png');
-  heartImage = loadImage('/images/Heart.png');
+  heartImage = loadImage('/images/heart.png');
   cloudImage = loadImage('/images/cloud.png');
-  circleImage = loadImage('/images/circle.png');
+  flowerImage = loadImage('/images/flower.png');
 
  
-  currentBackground =Starbackground;
+  currentBackground =starbackground;
   currentImage = starImage;
 }
 
@@ -87,67 +88,80 @@ image(currentBackground, 0, 0, 1280, 720);
   imageMode(CENTER);
   // console.log(currentImage);
   image(currentImage, noseTipX, noseTipY, 700, 700);
+
  pop()
 
     if(currentImage === starImage){
     noStroke();
     fill(142, 107, 17);
-//star left eye
+//star left eye outer
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
-//star right eye
+//star right eye outer
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
-    }
+
+    noStroke();
+    fill(255, 219, 128);
+//star left eye inner
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
+//star right eye inner
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
+
+    // noStroke();
+    // fill(142, 107, 17);
+    // ellipse(lipsCenterX, lipsCenterY, lipsWidth/2, lipsHeight/2);
+ }
 
 
  if(currentImage === heartImage){
    noStroke();
-    fill(142, 17, 108);
+    fill(169, 0, 21);
  //heart left eye
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
 //heart right eye
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
+     
+    noStroke();
+    fill(253, 130, 145);
+//heart left eye inner
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
+//heart right eye inner
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
     }
+
 
  
 if(currentImage === cloudImage){
  noStroke();
-    fill(22, 50, 98);
+    fill(0, 19, 92);
  //Cloud left eye
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
 //Cloud right eye
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
 
+    noStroke();
+    fill(148, 172, 255);
+//Cloud left eye inner
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
+//Cloud right eye inner
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
 }
-  if(currentImage === circleImage){ 
+
+
+if(currentImage === flowerImage){ 
  noStroke();
-    fill(16, 128, 23);
- //Circle left eye
+    fill(164, 73, 21);
+ //flower left eye
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
-//circle right eye
+//flower right eye
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
-
-
+    
+    noStroke();
+    fill(255, 160, 107);
+//flower left eye inner
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
+//flower right eye inner
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
   }
-
-
-
-
-
-    // drawPoints(face.leftEye);
-    // drawPoints(face.leftEyebrow);
-    // drawPoints(face.lips);
-    // drawPoints(face.rightEye);
-    // drawPoints(face.rightEyebrow);
-
-    // drawX(rightEyeCenterX,rightEyeCenterY);
-    // drawX(leftEyeCenterX,leftEyeCenterY);
-
-
-    // drawX(noseTipX,noseTipY); 
-
-    // drawX(face.keypoints[332].x,face.keypoints[332].y);
-    // drawX(face.keypoints[103].x,face.keypoints[103].y);
-
 
     /*
     Stop drawing on the face here
@@ -160,23 +174,20 @@ if(currentImage === cloudImage){
 
 function keyTyped(){
   if (key === 'z'){
-    currentBackground = Starbackground;
+    currentBackground = starbackground;
     currentImage = starImage;
-
-
   }
-
   else if (key === 'x'){
-    currentBackground = Heartbackground;
+    currentBackground = heartbackground;
     currentImage = heartImage;
   }
   else if (key === 'c'){
-    currentBackground = Cloudbackground;
+    currentBackground = cloudbackground;
     currentImage = cloudImage;
   }
   else if (key === 'v'){
-    currentBackground = Circlebackground;
-    currentImage = circleImage;
+    currentBackground = flowerbackground;
+    currentImage = flowerImage;
   }
 }
 
