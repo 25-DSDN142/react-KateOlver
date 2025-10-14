@@ -87,7 +87,8 @@ image(currentBackground, 0, 0, 1280, 720);
   push()
   imageMode(CENTER);
   // console.log(currentImage);
-  image(currentImage, noseTipX, noseTipY, 700, 700);
+  image(currentImage, noseTipX, noseTipY, 645, 645);
+ 
 
  pop()
 
