@@ -1,6 +1,4 @@
 // ----=  Faces  =----
-/* load images here */
-
 let starImage; 
 let heartImage;
 let cloudImage;
@@ -16,18 +14,17 @@ let currentImage;
 let currentBackground;
 
 function prepareInteraction() {
-
+//background images
   starbackground = loadImage('/images/starbackground_.png');
   heartbackground = loadImage('/images/heartbackground.png');
   cloudbackground = loadImage('/images/cloudbackground.png');
   flowerbackground = loadImage('/images/flowerbackground.png');
- 
+//face images
   starImage = loadImage('/images/star.png');
   heartImage = loadImage('/images/heart.png');
   cloudImage = loadImage('/images/cloud.png');
   flowerImage = loadImage('/images/flower.png');
-
- 
+//keys
   currentBackground =starbackground;
   currentImage = starImage;
 }
@@ -35,31 +32,19 @@ function prepareInteraction() {
 function drawInteraction(faces, hands) {
 image(currentBackground, 0, 0, 1280, 720);
 
-
-  // for loop to capture if there is more than one face on the screen. This applies the same process to all faces. 
   for (let i = 0; i < faces.length; i++) {
-    let face = faces[i]; // face holds all the keypoints of the face\
+    let face = faces[i]; 
     console.log(face);
     if (showKeypoints) {
       drawPoints(face)
     }
    
-    // Face basics
-    let faceCenterX = face.faceOval.centerX;
-    let faceCenterY = face.faceOval.centerY;
-    let faceWidth = face.faceOval.width;
-    let faceheight = face.faceOval.height;
     // Left eye
     let leftEyeCenterX = face.leftEye.centerX;
     let leftEyeCenterY = face.leftEye.centerY;
     let leftEyeWidth = face.leftEye.width;
     let leftEyeHeight = face.leftEye.height;
-    // Left eyebrow
-    let leftEyebrowCenterX = face.leftEyebrow.centerX;
-    let leftEyebrowCenterY = face.leftEyebrow.centerY;
-    let leftEyebrowWidth = face.leftEyebrow.width;
-    let leftEyebrowHeight = face.leftEyebrow.height;
-
+   
     // Lips
     let lipsCenterX = face.lips.centerX;
     let lipsCenterY = face.lips.centerY;
@@ -72,25 +57,14 @@ image(currentBackground, 0, 0, 1280, 720);
     let rightEyeWidth = face.rightEye.width;
     let rightEyeHeight = face.rightEye.height;
 
-    // Right eyebrow
-    let rightEyebrowCenterX = face.rightEyebrow.centerX;
-    let rightEyebrowCenterY = face.rightEyebrow.centerY;
-    let rightEyebrowWidth = face.rightEyebrow.width;
-    let rightEyebrowHeight = face.rightEyebrow.height;
-
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
-    /*  
-    Start drawing on the face here
-    */
-
+   
   push()
   imageMode(CENTER);
   // console.log(currentImage);
   image(currentImage, noseTipX, noseTipY, 645, 645);
- 
-
- pop()
+  pop()
 
     if(currentImage === starImage){
     noStroke();
@@ -106,19 +80,18 @@ image(currentBackground, 0, 0, 1280, 720);
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
 //star right eye inner
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
-
-    // noStroke();
-    // fill(142, 107, 17);
-    // ellipse(lipsCenterX, lipsCenterY, lipsWidth/2, lipsHeight/2);
+//starmouth
+    noStroke();
+    fill(142, 107, 17);
+    ellipse(lipsCenterX, lipsCenterY, lipsWidth, lipsHeight);
  }
-
 
  if(currentImage === heartImage){
    noStroke();
     fill(169, 0, 21);
- //heart left eye
+ //heart left eye outer
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight*8);
-//heart right eye
+//heart right eye outer
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight*8);
      
     noStroke();
@@ -127,10 +100,12 @@ image(currentBackground, 0, 0, 1280, 720);
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
 //heart right eye inner
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
+//heart mouth 
+    noStroke();
+     fill(169, 0, 21);
+    arc(lipsCenterX, lipsCenterY, lipsWidth, lipsHeight, 0, PI);
     }
 
-
- 
 if(currentImage === cloudImage){
  noStroke();
     fill(0, 19, 92);
@@ -145,8 +120,11 @@ if(currentImage === cloudImage){
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
 //Cloud right eye inner
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
+  //Cloud mouth
+    noStroke();
+    fill(0, 19, 92);
+   ellipse(lipsCenterX, lipsCenterY, lipsWidth/2, lipsHeight*2);
 }
-
 
 if(currentImage === flowerImage){ 
  noStroke();
@@ -162,15 +140,14 @@ if(currentImage === flowerImage){
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight*4);
 //flower right eye inner
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight*4);
+ //flower mouth
+    noStroke();
+    fill(164, 73, 21);
+   arc(lipsCenterX, lipsCenterY, lipsWidth/2, lipsHeight*2, 0, PI);
   }
 
-    /*
-    Stop drawing on the face here
-    */
-
   }
-  //------------------------------------------------------
-  // You can make addtional elements here, but keep the face drawing inside the for loop. 
+  
 }
 
 function keyTyped(){
@@ -192,8 +169,6 @@ function keyTyped(){
   }
 }
 
-
-
 function drawX(X, Y) {
   push()
 
@@ -205,7 +180,6 @@ function drawX(X, Y) {
 }
 
 
-// This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
 function drawPoints(feature) {
 
   push()
